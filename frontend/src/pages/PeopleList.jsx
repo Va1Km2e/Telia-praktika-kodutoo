@@ -60,12 +60,12 @@ const PeopleList = () => {
     };
 
     const applyFilters = () => {
-        setCurrentPage(1);  // Reset to first page
+        setCurrentPage(1);
         navigate({
             pathname: location.pathname,
             search: `?name=${nameFilter || ""}&email=${emailFilter || ""}&phone=${phoneFilter || ""}&page=1&size=${pageSize}&sortBy=${sortBy}&sortDirection=${sortDirection}`,
         });
-        fetchPeople(); // Fetch people after filters are applied
+        fetchPeople();
     };
 
     const changePage = (page) => {
@@ -96,7 +96,7 @@ const PeopleList = () => {
         }
 
         try {
-            const response = await axios.put(`/api/person`, editablePerson);
+            await axios.put(`/api/person`, editablePerson);
             setEditPersonId(null);
             setEditablePerson(null);
             fetchPeople();
@@ -145,9 +145,9 @@ const PeopleList = () => {
 
         try {
             await axios.post('/api/person', newPerson);
-            setIsAddOverlayOpen(false);  // Close the overlay
-            setNewPerson({ name: "", email: "", phoneNumber: "", birthday: "" }); // Reset form
-            fetchPeople(); // Fetch updated list of people
+            setIsAddOverlayOpen(false);
+            setNewPerson({ name: "", email: "", phoneNumber: "", birthday: "" });
+            fetchPeople();
         } catch (err) {
             setError("Error adding person: " + err.message);
         }
@@ -160,7 +160,7 @@ const PeopleList = () => {
 
     const handleOverlayClose = () => {
         setIsAddOverlayOpen(false);
-        setNewPerson({ name: "", email: "", phoneNumber: "", birthday: "" }); // Reset form
+        setNewPerson({ name: "", email: "", phoneNumber: "", birthday: "" });
     };
 
     useEffect(() => {
@@ -179,7 +179,7 @@ const PeopleList = () => {
         setPageSize(size || 20);
         if (sortDirectionQuery) setSortDirection(sortDirectionQuery);
 
-        fetchPeople(); // Fetch data when the page first loads or when filters change
+        fetchPeople();
     }, [location.search]);
 
     return (
@@ -265,7 +265,7 @@ const PeopleList = () => {
                                 <input type="email" name="email" value={editablePerson.email} onChange={handleInputChange} />
                             ) : person.email}</td>
                             <td>{editPersonId === person.id ? (
-                                <input type="text" name="phone" value={editablePerson.phoneNumber} onChange={handleInputChange} />
+                                <input type="text" name="phoneNumber" value={editablePerson.phoneNumber} onChange={handleInputChange} />
                             ) : person.phoneNumber}</td>
                             <td>{editPersonId === person.id ? (
                                 <input type="date" name="birthday" value={editablePerson.birthday} onChange={handleInputChange} />
@@ -292,7 +292,6 @@ const PeopleList = () => {
 
             {error && <p className="error">{error}</p>}
 
-            {/* Add Person Overlay */}
             {isAddOverlayOpen && (
                 <div className="overlay">
                     <div className="overlay-content">
