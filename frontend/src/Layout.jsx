@@ -6,7 +6,7 @@ function Layout() {
             <header style={styles.header}>
                 <div style={styles.wrapper}>
                     <Link to="/" style={styles.navLink}>Home</Link>
-                    <Link to="/people-list" style={styles.navLink}>People</Link>
+                    <Link to="/people-list" style={styles.navLink}>People List</Link>
                 </div>
             </header>
 
@@ -38,7 +38,7 @@ const styles = {
         margin: "0 auto",
         width: "100%",
         display: "flex",
-        justifyContent: "space-between",
+        justifyContent: "left",
     },
     navLink: {
         padding: "0.5rem 1rem",

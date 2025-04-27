@@ -2,8 +2,6 @@ package ee.taltech.backend.person;
 
 import jakarta.validation.constraints.*;
 
-import java.time.LocalDate;
-
 public record PersonSearchCriteria(
         Long userId,
 

@@ -1,6 +1,5 @@
 package ee.taltech.backend.person;
 
-import jakarta.persistence.Column;
 import org.springframework.stereotype.Component;
 
 @Component

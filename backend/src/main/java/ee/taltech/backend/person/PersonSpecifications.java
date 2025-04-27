@@ -2,8 +2,6 @@ package ee.taltech.backend.person;
 
 import org.springframework.data.jpa.domain.Specification;
 
-import java.time.LocalDate;
-
 public class PersonSpecifications {
 
     public static Specification<PersonEntity> name(String name) {
